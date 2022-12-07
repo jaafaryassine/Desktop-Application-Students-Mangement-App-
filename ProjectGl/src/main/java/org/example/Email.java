@@ -10,15 +10,15 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class Email {
-    Document document;
+    Doc doc;
 
-    public  Email(Document doc){
-        this.document = doc;
+    public  Email(Doc doc){
+        this.doc = doc;
     }
 
     public void sendMail(){
         // Recipient's email ID needs to be mentioned.
-        String to = document.etudiant.email;
+        String to = doc.etudiant.email;
 
         // Sender's email ID needs to be mentioned
         String from = "ya.oumayma@gmail.com";

@@ -1,16 +1,6 @@
 package org.example;
 
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.io.File;
-import java.io.IOException;
 import java.sql.*;
-import java.util.Properties;
 
 public class DetailsDoc extends javax.swing.JFrame {
     public int id_doc;
@@ -29,7 +19,7 @@ public class DetailsDoc extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
         Etudiant etudiant = new Etudiant();
-        Document document = new Document();
+        Doc doc = new Doc();
 
 
         System.out.println(id_doc);
@@ -97,13 +87,13 @@ public class DetailsDoc extends javax.swing.JFrame {
                 etudiant.email = res.getString("email");
                 etudiant.apogee = res.getString("n_apogee");
                 etudiant.cin = res.getString("cin");
-                document.type = res.getString("type");
-                document.etudiant = etudiant;
+                doc.type = res.getString("type");
+                doc.etudiant = etudiant;
                 lb_name.setText(etudiant.name);
                 lb_email.setText(etudiant.email);
                 lb_cin.setText(etudiant.cin);
                 lb_apogee.setText(etudiant.apogee);
-                lb_type.setText(document.type);
+                lb_type.setText(doc.type);
             }
         }
         catch (SQLException e){
@@ -112,7 +102,7 @@ public class DetailsDoc extends javax.swing.JFrame {
 
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Email email = new Email(document);
+                Email email = new Email(doc);
                 email.sendMail();
                 System.out.println("hahahahahhahahaha");
             }
