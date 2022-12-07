@@ -1,10 +1,10 @@
 package org.example;
 
 public class Etudiant {
-    String name;
-    String email;
-    String apogee;
-    String cin;
+    public String name;
+    public String email;
+    public String apogee;
+    public String cin;
 
     public Etudiant(){
 

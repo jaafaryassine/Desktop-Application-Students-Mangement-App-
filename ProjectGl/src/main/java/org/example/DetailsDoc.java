@@ -1,5 +1,7 @@
 package org.example;
 
+import documents.Ats;
+
 import java.sql.*;
 
 public class DetailsDoc extends javax.swing.JFrame {
@@ -20,10 +22,7 @@ public class DetailsDoc extends javax.swing.JFrame {
     private void initComponents() {
         Etudiant etudiant = new Etudiant();
         Doc doc = new Doc();
-
-
-        System.out.println(id_doc);
-
+        
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         lb_name = new javax.swing.JLabel();
@@ -87,6 +86,7 @@ public class DetailsDoc extends javax.swing.JFrame {
                 etudiant.email = res.getString("email");
                 etudiant.apogee = res.getString("n_apogee");
                 etudiant.cin = res.getString("cin");
+                doc.id_doc = res.getInt("id_doc");
                 doc.type = res.getString("type");
                 doc.etudiant = etudiant;
                 lb_name.setText(etudiant.name);
@@ -102,9 +102,24 @@ public class DetailsDoc extends javax.swing.JFrame {
 
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Email email = new Email(doc);
-                email.sendMail();
-                System.out.println("hahahahahhahahaha");
+                if(doc.type.equals("attestation de scolarité")){
+                    Ats ats = new Ats(doc.id_doc, doc.type, doc.etudiant);
+                    try{
+                        ats.generateDoc();
+                        System.out.println("doc generated");
+                        Email email = new Email(ats);
+                        email.sendMail();
+                    }
+                    catch (Exception exc){
+                        System.out.println(exc);
+                    }
+                } else if (doc.type.equals("convention de stage")) {
+                    
+                } else if (doc.type.equals("relevé de notes")) {
+                    
+                } else if (doc.type.equals("attestation de réussite")) {
+                    
+                }
             }
         });
 

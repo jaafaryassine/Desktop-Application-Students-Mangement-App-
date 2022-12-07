@@ -67,7 +67,7 @@ public class Email {
 
             try {
 
-                File f =new File("C:\\Users\\Dell\\Documents\\Validation Nchaallah.pdf");
+                File f =new File("D:\\xampp\\htdocs\\glDocs\\" + doc.id_doc + ".pdf" );
 
                 attachmentPart.attachFile(f);
                 textPart.setText("This is text");
