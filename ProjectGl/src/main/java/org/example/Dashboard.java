@@ -62,14 +62,14 @@ public class Dashboard extends javax.swing.JFrame {
 
         traitedemande2.setBackground(new java.awt.Color(102, 102, 255));
         traitedemande2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        traitedemande2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Pro\\Downloads\\icons8-historical-30.png")); // NOI18N
+        traitedemande2.setIcon(new javax.swing.ImageIcon("D:\\User\\glAssets\\icons8-historical-30.png")); // NOI18N
         traitedemande2.setText("Historique de demandes");
         traitedemande2.setBorder(null);
 
 
         traitedemande3.setBackground(new java.awt.Color(102, 102, 255));
         traitedemande3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        traitedemande3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Pro\\Downloads\\icons8-submit-progress-24.png")); // NOI18N
+        traitedemande3.setIcon(new javax.swing.ImageIcon("D:\\User\\glAssets\\icons8-submit-progress-24.png")); // NOI18N
         traitedemande3.setText("Demandes non-traités");
         traitedemande3.setBorder(null);
 
@@ -158,7 +158,7 @@ public class Dashboard extends javax.swing.JFrame {
         });
 
         recherche.setBackground(new java.awt.Color(102, 102, 255));
-        recherche.setIcon(new javax.swing.ImageIcon("C:\\Users\\Pro\\Downloads\\icons8-search-24.png")); // NOI18N
+        recherche.setIcon(new javax.swing.ImageIcon("D:\\User\\glAssets\\icons8-search-24.png")); // NOI18N
 
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);

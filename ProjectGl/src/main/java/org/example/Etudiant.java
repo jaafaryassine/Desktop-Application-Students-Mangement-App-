@@ -5,6 +5,11 @@ public class Etudiant {
     public String email;
     public String apogee;
     public String cin;
+    public String cne;
+    public String date_naissance;
+    public int actual_semester;
+    public String filiere;
+
 
     public Etudiant(){
 

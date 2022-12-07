@@ -2,6 +2,7 @@ package documents;
 
 import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
+import java.util.Date;
 
 import org.example.Doc;
 import org.example.Etudiant;
@@ -22,29 +23,32 @@ import com.itextpdf.layout.element.Table;
 
 public class ConventionStage extends Doc {
 	public String companyName;
-	public int period; // En mois
+	public String startDate;
+	public String endDate;
 
-	public ConventionStage(int id_doc, String type, Etudiant e, String companyName, int period) {
+
+	public ConventionStage(int id_doc, String type, Etudiant e, String companyName, String startDate, String endDate) {
 		super(id_doc, type, e);
 		this.companyName = companyName;
-		this.period = period;
+		this.startDate = startDate;
+		this.endDate = endDate;
 	}
 
 	public void generateDoc() throws MalformedURLException, FileNotFoundException {
-		String nom = "Mohamed Fatehi Alhabib";
+		String nom = this.etudiant.name;
 		String cycle = "Genie informatique ";
-		String nom_societé = "SAFRAN NACELLES MOROCCO";
+		String nom_societé = this.companyName;
 		String adresse_societe = " Aéroport Mohamed V Technopole De Nouaceur Bp 80 - Casablanca";
-		String date_debut_stage = "20/06/2022";
-		String date_fin_stage = "20/08/2022";
-		String date_actuel = " 20/05/2022";
+		String date_debut_stage = this.startDate;
+		String date_fin_stage = this.endDate;
+		Date now = new Date();
+		String date_actuel = "20/05/2022";
 		String nom_coordonnateur = "DKHISSI IBTISSAM";
 
 		// Creating a path to the pdf
-		String path = "C:\\\\Users\\\\Simofatt\\\\Desktop\\\\Convention_de_stage.pdf ";
-		String imagePath = "C:\\Users\\Simofatt\\Downloads\\Logo.png";
-		String imagePath2 = "C:\\Users\\Simofatt\\Downloads\\Signature .jpg";
-
+		String path = "D:\\xampp\\htdocs\\glDocs\\" + this.id_doc + ".pdf";
+		String imagePath = "D:\\User\\glAssets\\logo.jpeg";
+		String imagePath2 = "D:\\User\\glAssets\\signature.jpeg";
 		// Creating a PdfWriter object ,
 		// which will contain the path to the pdf
 		// + Creating a pdfDocument object

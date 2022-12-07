@@ -1,5 +1,6 @@
 package documents;
 
+import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
 
 import org.example.Doc;
@@ -27,7 +28,7 @@ public class Atr extends Doc {
 		this.year = year;
 	}
 
-	public void generateDoc() throws MalformedURLException {
+	public void generateDoc() throws MalformedURLException, FileNotFoundException {
 		// The variable that we'll use to fill the document
 		String sexe = "Monsieur ";
 		String nom = "Mohamed Fatehi Alhabib";
@@ -39,10 +40,9 @@ public class Atr extends Doc {
 		String date_niveau_attesté = "2020/2021";
 		String date_attestation = " 4 decembre 2022";
 		// Creating a path to the pdf
-		String path = "C:\\\\Users\\\\Simofatt\\\\Desktop\\\\attestation_de_reussite.pdf ";
-		String imagePath = "C:\\Users\\Simofatt\\Downloads\\Logo.png";
-		String imagePath2 = "C:\\Users\\Simofatt\\Downloads\\Signature .jpg";
-
+		String path = "D:\\xampp\\htdocs\\glDocs\\" + this.id_doc + ".pdf";
+		String imagePath = "D:\\User\\glAssets\\logo.jpeg";
+		String imagePath2 = "D:\\User\\glAssets\\signature.jpeg";
 		// Creating a PdfWriter object ,
 		// which will contain the path to the pdf
 		// + Creating a pdfDocument object

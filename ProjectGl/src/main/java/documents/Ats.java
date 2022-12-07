@@ -27,19 +27,24 @@ public class Ats extends Doc {
 	public void generateDoc() throws FileNotFoundException, MalformedURLException {
 //The variable that we'll use to fill the document
 		// The variable that we'll use to fill the document
-		String sexe = "Monsieur ";
-		String nom = "Mohamed Fatehi Alhabib";
-		String cin = "BE911812";
-		String code_natio = " R134480330";
-		String c_apoge = "18044080";
-		String date_naiss = "15 Mars 2020";
+		String nom = this.etudiant.name;
+		String cin = this.etudiant.cin;
+		String code_natio = this.etudiant.cne;
+		String c_apoge = this.etudiant.apogee;
+		String date_naiss = this.etudiant.date_naissance;
 		String annee_actuel = " 2022/2023";
-		String annee_etude = "2eme Annee du Cycle Ingenieur: Genie Informatique";
+		String annee_etude;
+		if(this.etudiant.actual_semester==1 || this.etudiant.actual_semester==2){
+			annee_etude = "1ère année classe préparatoire";
+		} else if () {
+
+		}
+
 		String date_attestation = " 4 decembre 2022";
 		// Creating a path to the pdf
-		String path = "C:\\\\Users\\\\Simofatt\\\\Desktop\\\\Attestation_scolarité.pdf ";
-		String imagePath = "C:\\Users\\Simofatt\\Downloads\\Logo.png";
-		String imagePath2 = "C:\\Users\\Simofatt\\Downloads\\Signature .jpg";
+		String path = "D:\\xampp\\htdocs\\glDocs\\" + this.id_doc + ".pdf";
+		String imagePath = "D:\\User\\glAssets\\logo.jpeg";
+		String imagePath2 = "D:\\User\\glAssets\\signature.jpeg";
 
 		// Creating a PdfWriter object ,
 		// which will contain the path to the pdf
@@ -101,7 +106,7 @@ public class Ats extends Doc {
 		// Writing the body on the document
 		document.add(new Paragraph(" \r\n"
 				+ "Le directeur de l’école Nationale des Sciences Appliquées de Tetouan atteste que l’étudiant : \r\n"));
-		document.add(new Paragraph(sexe + nom).setBold().setFontSize(10F));
+		document.add(new Paragraph( nom).setBold().setFontSize(10F));
 		document.add(new Paragraph("Numéro de la carte d’identité nationale :   " + cin + "\r\n" + "\n"
 				+ "Code national de l’étudiant :   " + code_natio + " \r\n" + "\n" + "N°etudiant :   " + c_apoge
 				+ "\r\n" + "\n" + "Né le :   " + date_naiss + "\r\n" + "\n"
