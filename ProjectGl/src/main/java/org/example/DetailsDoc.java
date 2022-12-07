@@ -1,8 +1,16 @@
 package org.example;
 
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.io.File;
+import java.io.IOException;
 import java.sql.*;
+import java.util.Properties;
 
 public class DetailsDoc extends javax.swing.JFrame {
     public int id_doc;
@@ -20,7 +28,12 @@ public class DetailsDoc extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
+        Etudiant etudiant = new Etudiant();
+        Document document = new Document();
+
+
         System.out.println(id_doc);
+
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         lb_name = new javax.swing.JLabel();
@@ -62,11 +75,6 @@ public class DetailsDoc extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(12, 179, 35));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Accepter");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jButton2.setBackground(new java.awt.Color(240, 1, 1));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
@@ -85,16 +93,31 @@ public class DetailsDoc extends javax.swing.JFrame {
                         ResultSet.CONCUR_UPDATABLE);
                 ResultSet res = preparedStatement.executeQuery();
                 res.next();
-                lb_name.setText(res.getString("name"));
-                lb_email.setText(res.getString("email"));
-                lb_cin.setText(res.getString("cin"));
-                lb_apogee.setText(res.getString("n_apogee"));
-                lb_type.setText(res.getString("type"));
+                etudiant.name = res.getString("name");
+                etudiant.email = res.getString("email");
+                etudiant.apogee = res.getString("n_apogee");
+                etudiant.cin = res.getString("cin");
+                document.type = res.getString("type");
+                document.etudiant = etudiant;
+                lb_name.setText(etudiant.name);
+                lb_email.setText(etudiant.email);
+                lb_cin.setText(etudiant.cin);
+                lb_apogee.setText(etudiant.apogee);
+                lb_type.setText(document.type);
             }
         }
         catch (SQLException e){
             e.printStackTrace();
         }
+
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Email email = new Email(document);
+                email.sendMail();
+                System.out.println("hahahahahhahahaha");
+            }
+        });
+
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

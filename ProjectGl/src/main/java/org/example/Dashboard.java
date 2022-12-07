@@ -51,7 +51,6 @@ public class Dashboard extends javax.swing.JFrame {
                         int modelRow = Integer.valueOf( e.getActionCommand() );
                         try {
                             res.absolute(modelRow + 1); // Positionne the cursor in the row clicked
-                            Dashboard.getFrames()[0].dispose();
                             setVisible(false);
                             DetailsDoc detailsDoc = new DetailsDoc(res.getInt("id_doc"));
                         } catch (SQLException ex){
