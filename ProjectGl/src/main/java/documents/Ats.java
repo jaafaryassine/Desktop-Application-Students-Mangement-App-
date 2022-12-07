@@ -34,7 +34,15 @@ public class Ats extends Doc {
 		String c_apoge = "18044080";
 		String date_naiss = "15 Mars 2020";
 		String annee_actuel = " 2022/2023";
+<<<<<<< Updated upstream
 		String annee_etude = "2eme Annee du Cycle Ingenieur: Genie Informatique";
+=======
+		String annee_etude = new String();
+		if(this.etudiant.actual_semester==1 || this.etudiant.actual_semester==2){
+			annee_etude = "1ère année classe préparatoire";
+		}
+
+>>>>>>> Stashed changes
 		String date_attestation = " 4 decembre 2022";
 		// Creating a path to the pdf
 		String path = "C:\\\\Users\\\\Simofatt\\\\Desktop\\\\Attestation_scolarité.pdf ";
