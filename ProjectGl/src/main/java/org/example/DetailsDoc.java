@@ -485,6 +485,59 @@ public class DetailsDoc extends javax.swing.JFrame {
         }
     }
 
+<<<<<<< Updated upstream
+=======
+    public void getDetailsDoc(Etudiant etudiant, Doc doc){
+        try{
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gl","root","");
+            if (conn != null) {
+                String get_admin_query = "SELECT * FROM etudiants, documents WHERE etudiants.n_apogee = documents.n_apogee AND documents.id_doc=" + this.id_doc;
+                PreparedStatement preparedStatement = conn.prepareStatement(get_admin_query, ResultSet.TYPE_SCROLL_SENSITIVE,
+                        ResultSet.CONCUR_UPDATABLE);
+                ResultSet res = preparedStatement.executeQuery();
+                res.next();
+                etudiant.name = res.getString("name");
+                etudiant.email = res.getString("email");
+                etudiant.apogee = res.getString("n_apogee");
+                etudiant.cin = res.getString("cin");
+                etudiant.cne = res.getString("cne");
+                etudiant.date_naissance = res.getString("date_naissance");
+                etudiant.actual_semester = res.getInt("actual_semester");
+                etudiant.filiere = res.getString("filiere");
+                doc.id_doc = res.getInt("id_doc");
+                doc.type = res.getString("type");
+                doc.etudiant = etudiant;
+                lb_name.setText(etudiant.name);
+                lb_email.setText(etudiant.email);
+                lb_cin.setText(etudiant.cin);
+                lb_apogee.setText(etudiant.apogee);
+                lb_type.setText(doc.type);
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+
+    }
+
+    public void updateStatusDoc(String action){
+        try{
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gl","root","");
+            if (conn != null) {
+                String get_admin_query = "UPDATE documents SET statut=? WHERE id_doc=?";
+                PreparedStatement preparedStatement = conn.prepareStatement(get_admin_query, ResultSet.TYPE_SCROLL_SENSITIVE,
+                        ResultSet.CONCUR_UPDATABLE);
+                preparedStatement.setString(1,action);
+                preparedStatement.setInt(2,this.id_doc);
+                preparedStatement.executeUpdate();
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+>>>>>>> Stashed changes
     /**
      * @param args the command line arguments
      */

@@ -33,12 +33,12 @@ public class Ats extends Doc {
 		String c_apoge = this.etudiant.apogee;
 		String date_naiss = this.etudiant.date_naissance;
 		String annee_actuel = " 2022/2023";
+
 		String annee_etude;
 		if(this.etudiant.actual_semester==1 || this.etudiant.actual_semester==2){
 			annee_etude = "1ère année classe préparatoire";
-		} else if () {
+		} else if (){}
 
-		}
 
 		String date_attestation = " 4 decembre 2022";
 		// Creating a path to the pdf
