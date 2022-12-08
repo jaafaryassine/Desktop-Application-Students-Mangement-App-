@@ -2,6 +2,7 @@ package documents;
 
 import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.example.Doc;
@@ -43,19 +44,20 @@ public class ConventionStage extends Doc {
 		String date_debut_stage = this.startDate;
 		String date_fin_stage = this.endDate;
 		Date now = new Date();
-		String date_actuel = "20/05/2022";
+		SimpleDateFormat sdf = new  SimpleDateFormat("dd MMMM yyyy");
+		String date_actuel =sdf.format(now);
 		String nom_coordonnateur = "";
 		if ( this.etudiant.filiere.equals("Génie Informatique")){ 
 			
-			nom_coordonnateur="YACINE EL YOUNSSI" ; 
+			nom_coordonnateur="EL YOUNOUSSI YACINE " ;
 		}else if  ( this.etudiant.filiere.equals("Supply Chain Management")){
 			nom_coordonnateur="DKHISSI IBTISSAM";
 		}else if  ( this.etudiant.filiere.equals("Génie des Systèmes Télecomunication et Réseau")){
-			nom_coordonnateur="";
+			nom_coordonnateur="CHAKKOR OTMAN";
 		}else if  ( this.etudiant.filiere.equals("Génie Mécatronique")){
-			nom_coordonnateur="";
+			nom_coordonnateur="SNABI MUSTAPHA";
 		}else if  ( this.etudiant.filiere.equals("Génie Civil")){
-			nom_coordonnateur="";
+			nom_coordonnateur="Khamlichi Abdellatif";
 		}
 
 		// Creating a path to the pdf
@@ -202,7 +204,7 @@ public class ConventionStage extends Doc {
 				.setPaddingLeft(20));
 		table3.addCell(new Cell().add("Le Coordonnateur de la filière \r\n").setBorder(Border.NO_BORDER)
 				.setFontSize(10F).setPaddingLeft(90));
-		table3.addCell(new Cell().add("  Safae BAZ").setBorder(Border.NO_BORDER).setFontSize(10F).setPaddingLeft(60));
+		table3.addCell(new Cell().add(nom).setBorder(Border.NO_BORDER).setFontSize(10F).setPaddingLeft(60));
 		table3.addCell(new Cell().add(nom_coordonnateur + "\r\n ").setBorder(Border.NO_BORDER).setFontSize(10F)
 				.setPaddingLeft(95));
 		document.add(table3);

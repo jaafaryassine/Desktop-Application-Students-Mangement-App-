@@ -2,6 +2,8 @@ package documents;
 
 import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.example.Doc;
 import org.example.Etudiant;
@@ -36,7 +38,9 @@ public class Atr extends Doc {
 		String code_natio = this.etudiant.cne;
 		String c_apoge = this.etudiant.apogee;
 		String date_naiss = this.etudiant.date_naissance;
-		String date_attestation = " 4 decembre 2022";
+		Date now = new Date();
+		SimpleDateFormat sdf = new  SimpleDateFormat("dd MMMM yyyy");
+		String date_attestation =sdf.format(now);
 		String niveau_attestation="";
 		if(this.year==1){
 			niveau_attestation ="1ère année Classe Préparatoire" ; 			
@@ -44,11 +48,12 @@ public class Atr extends Doc {
 			niveau_attestation= "2ème année Classe Préparatoire";
 			
 		}else if (this.year==3) { 
-			niveau_attestation = "1ère année Cycle Ingenieur " ;
+			niveau_attestation = "1ère année Cycle Ingenieur : " + this.etudiant.filiere ;
 		}else if (this.year==4) { 
-			niveau_attestation = "2ème année Cycle Ingenieur " ;
+			niveau_attestation = "2ème année Cycle Ingenieur " + this.etudiant.filiere ;
 		}else if (this.year==5 ) { 
-			niveau_attestation = "3ème année Cycle Ingenieur " ;}
+			niveau_attestation = "3ème année Cycle Ingenieur " + this.etudiant.filiere ;
+		}
 		// Creating a path to the pdf
 		String path = "D:\\xampp\\htdocs\\glDocs\\" + this.id_doc + ".pdf";
 		String imagePath = "D:\\User\\glAssets\\logo.jpeg";

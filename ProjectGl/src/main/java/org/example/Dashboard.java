@@ -4,7 +4,6 @@ import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
 import java.awt.event.ActionEvent;
 import java.sql.*;
 
@@ -29,12 +28,12 @@ public class Dashboard extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        attscolarité = new javax.swing.JButton();
+        ats = new javax.swing.JButton();
         traitedemande2 = new javax.swing.JButton();
         traitedemande3 = new javax.swing.JButton();
-        attreuissite = new javax.swing.JButton();
-        relevenote = new javax.swing.JButton();
-        conventionstage = new javax.swing.JButton();
+        atr = new javax.swing.JButton();
+        releve = new javax.swing.JButton();
+        cvs = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         rechercher = new javax.swing.JTextField();
         recherche = new javax.swing.JButton();
@@ -49,16 +48,12 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Tableau de bord");
 
-        attscolarité.setBackground(new java.awt.Color(153, 153, 255));
-        attscolarité.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        attscolarité.setText("Attestation de scolarité");
-        attscolarité.setBorder(null);
-        attscolarité.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        attscolarité.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                attscolaritéActionPerformed(evt);
-            }
-        });
+        ats.setBackground(new java.awt.Color(153, 153, 255));
+        ats.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        ats.setText("Attestation de scolarité");
+        ats.setBorder(null);
+        ats.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
 
         traitedemande2.setBackground(new java.awt.Color(102, 102, 255));
         traitedemande2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -74,35 +69,23 @@ public class Dashboard extends javax.swing.JFrame {
         traitedemande3.setBorder(null);
 
 
-        attreuissite.setBackground(new java.awt.Color(153, 153, 255));
-        attreuissite.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        attreuissite.setText("Attestation de réuissite");
-        attreuissite.setBorder(null);
-        attreuissite.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                attreuissiteActionPerformed(evt);
-            }
-        });
+        atr.setBackground(new java.awt.Color(153, 153, 255));
+        atr.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        atr.setText("Attestation de réussite");
+        atr.setBorder(null);
 
-        relevenote.setBackground(new java.awt.Color(153, 153, 255));
-        relevenote.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        relevenote.setText("Relevé de notes");
-        relevenote.setBorder(null);
-        relevenote.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                relevenoteActionPerformed(evt);
-            }
-        });
 
-        conventionstage.setBackground(new java.awt.Color(153, 153, 255));
-        conventionstage.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        conventionstage.setText("Convention de stage");
-        conventionstage.setBorder(null);
-        conventionstage.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                conventionstageActionPerformed(evt);
-            }
-        });
+        releve.setBackground(new java.awt.Color(153, 153, 255));
+        releve.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        releve.setText("Relevé de notes");
+        releve.setBorder(null);
+
+
+        cvs.setBackground(new java.awt.Color(153, 153, 255));
+        cvs.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cvs.setText("Convention de stage");
+        cvs.setBorder(null);
+
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -115,10 +98,10 @@ public class Dashboard extends javax.swing.JFrame {
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(traitedemande3, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(jLabel1)
-                                                        .addComponent(relevenote, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(attreuissite, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(conventionstage, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(attscolarité, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                        .addComponent(releve, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(atr, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(cvs, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(ats, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addContainerGap()
                                                 .addComponent(traitedemande2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -132,13 +115,13 @@ public class Dashboard extends javax.swing.JFrame {
                                 .addGap(62, 62, 62)
                                 .addComponent(traitedemande3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(attscolarité, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ats, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(8, 8, 8)
-                                .addComponent(conventionstage, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cvs, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(relevenote, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(releve, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(attreuissite, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(atr, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(38, 38, 38)
                                 .addComponent(traitedemande2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -236,6 +219,32 @@ public class Dashboard extends javax.swing.JFrame {
                 getNonTraite(table);
             }
         });
+
+        atr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                table.setRowCount(0);
+                getByType("attestation de réussite", table);
+            }
+        });
+        ats.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                table.setRowCount(0);
+                getByType("attestation de scolarité", table);
+            }
+        });
+        cvs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                table.setRowCount(0);
+                getByType("convention de stage", table);
+            }
+        });
+        releve.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                table.setRowCount(0);
+                getByType("relevé de notes", table);
+            }
+        });
+
         jScrollPane1.setViewportView(tabhistorique);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -301,9 +310,15 @@ public class Dashboard extends javax.swing.JFrame {
                         int modelRow = Integer.valueOf( e.getActionCommand() );
                         try {
                             res.absolute(modelRow + 1); // Positionne the cursor in the row clicked
-                            setVisible(false);
-                            DetailsDoc detailsDoc = new DetailsDoc(res.getInt("id_doc"));
-                            System.out.println("hdjdhdh");
+                            if(res.getString("statut").equals("n_traite")){
+                                System.out.println("non traite");
+                                setVisible(false);
+                                DetailsDoc detailsDoc = new DetailsDoc(res.getInt("id_doc"));
+                            } else if (res.getString("statut").equals("accepte")) {
+                                System.out.println("accepteeee");
+                                setVisible(false);
+                                DownloadDocPage downloadDocPage = new DownloadDocPage(res.getInt("id_doc"));
+                            }
                         } catch (SQLException ex){
                             System.out.println(ex);
                         }
@@ -338,9 +353,14 @@ public class Dashboard extends javax.swing.JFrame {
                         int modelRow = Integer.valueOf( e.getActionCommand() );
                         try {
                             res.absolute(modelRow + 1); // Positionne the cursor in the row clicked
-                            setVisible(false);
-                            DetailsDoc detailsDoc = new DetailsDoc(res.getInt("id_doc"));
-                            System.out.println("hdjdhdh");
+                            if(res.getString("statut").equals("refuse")){
+                                System.out.println("refuse");
+                                setVisible(false);
+                            } else if (res.getString("statut").equals("accepte")) {
+                                System.out.println("accepteeee");
+                                setVisible(false);
+                                DownloadDocPage downloadDocPage = new DownloadDocPage(res.getInt("id_doc"));
+                            }
                         } catch (SQLException ex){
                             System.out.println(ex);
                         }
@@ -374,8 +394,57 @@ public class Dashboard extends javax.swing.JFrame {
                     int modelRow = Integer.valueOf( e.getActionCommand() );
                     try {
                         res.absolute(modelRow + 1); // Positionne the cursor in the row clicked
-                        setVisible(false);
-                        DetailsDoc detailsDoc = new DetailsDoc(res.getInt("id_doc"));
+                        if(res.getString("statut").equals("n_traite")){
+                            System.out.println("non traite");
+                            setVisible(false);
+                            DetailsDoc detailsDoc = new DetailsDoc(res.getInt("id_doc"));
+                        } else if (res.getString("statut").equals("accepte")) {
+                            System.out.println("accepteeee");
+                            setVisible(false);
+                            DownloadDocPage downloadDocPage = new DownloadDocPage(res.getInt("id_doc"));
+                        }
+                    } catch (SQLException ex){
+                        System.out.println(ex);
+                    }
+                }
+            };
+            ButtonColumn test = new ButtonColumn(tabhistorique,testAction,4);
+
+            while (res.next()){
+                System.out.println(res.getInt("id_doc"));
+                table.addRow(new Object[]{res.getString("name"), res.getString("email"), res.getString("n_apogee"),res.getString("type"),"Voir details"});
+            }
+
+        }
+        catch (SQLException e){
+            System.out.println(e);
+        }
+    }
+
+    public void getByType(String type, DefaultTableModel table){
+        try{
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gl","root","");
+            String query = "SELECT * FROM etudiants, documents WHERE documents.n_apogee=etudiants.n_apogee AND type=?";
+            PreparedStatement preparedStatement = conn.prepareStatement(query,ResultSet.TYPE_SCROLL_SENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
+            preparedStatement.setString(1, type);
+            ResultSet res = preparedStatement.executeQuery();
+            Action testAction = new AbstractAction() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    JTable table = (JTable)e.getSource();
+                    int modelRow = Integer.valueOf( e.getActionCommand() );
+                    try {
+                        res.absolute(modelRow + 1); // Positionne the cursor in the row clicked
+                        if(res.getString("statut").equals("n_traite")){
+                            System.out.println("non traite");
+                            setVisible(false);
+                            DetailsDoc detailsDoc = new DetailsDoc(res.getInt("id_doc"));
+                        } else if (res.getString("statut").equals("accepte")) {
+                            System.out.println("accepteeee");
+                            setVisible(false);
+                            DownloadDocPage downloadDocPage = new DownloadDocPage(res.getInt("id_doc"));
+                        }
                     } catch (SQLException ex){
                         System.out.println(ex);
                     }
@@ -463,9 +532,9 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify
-    private javax.swing.JButton attreuissite;
-    private javax.swing.JButton attscolarité;
-    private javax.swing.JButton conventionstage;
+    private javax.swing.JButton atr;
+    private javax.swing.JButton ats;
+    private javax.swing.JButton cvs;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -473,7 +542,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton recherche;
     private javax.swing.JTextField rechercher;
-    private javax.swing.JButton relevenote;
+    private javax.swing.JButton releve;
     private javax.swing.JTable tabhistorique;
     private javax.swing.JButton traitedemande2;
     private javax.swing.JButton traitedemande3;

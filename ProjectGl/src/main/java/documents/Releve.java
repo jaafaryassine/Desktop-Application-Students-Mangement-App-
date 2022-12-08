@@ -2,6 +2,11 @@ package documents;
 
 import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
+import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 
 import org.example.Doc;
 import org.example.Etudiant;
@@ -21,15 +26,19 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 
 public class Releve extends Doc {
-	public int year;
-	
+	public Integer year;
+	public Integer semester;
+	public  ArrayList<ArrayList<String>> notes = new ArrayList<ArrayList<String>>();
 
-	public Releve(int id_doc, String type, Etudiant e, int year) {
+	public Releve(int id_doc, String type, Etudiant e, Integer year, Integer semester) {
 		super(id_doc, type, e);
 		this.year = year;
+		this.semester = semester;
 	}
 
 	public void generateDoc() throws MalformedURLException, FileNotFoundException {
+		
+		getNotes();
 		// The variable that we'll use to fill the document
 		
 		String nom = this.etudiant.name;
@@ -38,30 +47,11 @@ public class Releve extends Doc {
 		String c_apoge = this.etudiant.apogee;
 		String date_naiss = this.etudiant.date_naissance;
 		String annee_actuel = " 2022/2023";
-		String annee_etude = "2eme Annee du Cycle Ingenieur: Genie Informatique";
-		String date_attestation = " 4 decembre 2022";
-		String admis = "Validé";
-		String Resultat_total = " 12/20";
+		Date now = new Date();
+		SimpleDateFormat sdf = new  SimpleDateFormat("dd MMMM yyyy");
+		String date_attestation =sdf.format(now);
 
-		String matiere1 = "Algebre1 ";
-		String matiere2 = "Analyse ";
-		String matiere3 = "Mecanique";
-		String matiere4 = "Informatique";
-		String matiere5 = " langues ";
 
-		String note_matiere1 = "10/20";
-		String note_matiere2 = "15/20";
-		String note_matiere3 = "13/20";
-		String note_matiere4 = "10/20";
-		String note_matiere5 = "15/20";
-
-		String Resultat_matiere1 = "Validé";
-		String Resultat_matiere2 = "Validé";
-		String Resultat_matiere3 = "Validé";
-		String Resultat_matiere4 = "Validé";
-		String Resultat_matiere5 = "Validé";
-
-		String Session = " S1 2019/2020";
 		// Creating a path to the pdf
 		String path = "D:\\xampp\\htdocs\\glDocs\\" + this.id_doc + ".pdf";
 		String imagePath = "D:\\User\\glAssets\\logo.jpeg";
@@ -135,30 +125,44 @@ public class Releve extends Doc {
 		table2.addCell(new Cell().add(" " + "Modules ").setFontSize(10F));
 		table2.addCell(new Cell().add(" " + "Note/Baréme").setFontSize(10F));
 		table2.addCell(new Cell().add(" " + "Résultat ").setFontSize(10F));
-		table2.addCell(new Cell().add(" " + "Session").setFontSize(10F));
-		table2.addCell(new Cell().add(" " + matiere1).setFontSize(10F));
-		table2.addCell(new Cell().add(" " + note_matiere1).setFontSize(10F));
-		table2.addCell(new Cell().add(" " + Resultat_matiere1).setFontSize(10F));
-		table2.addCell(new Cell().add(" " + Session).setFontSize(10F));
-		table2.addCell(new Cell().add(" " + matiere2).setFontSize(10F));
-		table2.addCell(new Cell().add(" " + note_matiere2).setFontSize(10F));
-		table2.addCell(new Cell().add(" " + Resultat_matiere2).setFontSize(10F));
-		table2.addCell(new Cell().add(" " + Session).setFontSize(10F));
-		table2.addCell(new Cell().add(" " + matiere3).setFontSize(10F));
-		table2.addCell(new Cell().add(" " + note_matiere3).setFontSize(10F));
-		table2.addCell(new Cell().add(" " + Resultat_matiere3).setFontSize(10F));
-		table2.addCell(new Cell().add(" " + Session).setFontSize(10F));
-		table2.addCell(new Cell().add(" " + matiere4).setFontSize(10F));
-		table2.addCell(new Cell().add(" " + note_matiere4).setFontSize(10F));
-		table2.addCell(new Cell().add(" " + Resultat_matiere4).setFontSize(10F));
-		table2.addCell(new Cell().add(" " + Session).setFontSize(10F));
-		table2.addCell(new Cell().add(" " + matiere5).setFontSize(10F));
-		table2.addCell(new Cell().add(" " + note_matiere5).setFontSize(10F));
-		table2.addCell(new Cell().add(" " + Resultat_matiere5).setFontSize(10F));
-		table2.addCell(new Cell().add(" " + Session).setFontSize(10F));
-		document.add(table2);
+		table2.addCell(new Cell().add(" " + "Points jury").setFontSize(10F));
+		for (int i = 0; i < this.notes.size(); i++) {
+			table2.addCell(new Cell().add(this.notes.get(i).get(0)).setFontSize(10F));
+			table2.addCell(new Cell().add(this.notes.get(i).get(1)).setFontSize(10F));
+			table2.addCell(new Cell().add(this.notes.get(i).get(2)).setFontSize(10F));
+			table2.addCell(new Cell().add(this.notes.get(i).get(3)).setFontSize(10F));
+		}
 
-		document.add(new Paragraph("Résultat d'admission session 1 :        " + Resultat_total + "         " + admis)
+		document.add(table2);
+		String statut = "";
+		String session = "";
+		double result = getMoy();
+		if(this.year != null){
+			if(this.etudiant.actual_semester==1 || this.etudiant.actual_semester==2){
+				session= "1ère année Classe Préparatoire";
+
+			} else if (this.etudiant.actual_semester==3 || this.etudiant.actual_semester==4){
+				session = "2ème année Classe Préparatoire";
+
+			}else if (this.etudiant.actual_semester==5|| this.etudiant.actual_semester==6) {
+				session = "1ère année Cycle Ingenieur " + this.etudiant.filiere;
+
+			}else if (this.etudiant.actual_semester==7 || this.etudiant.actual_semester==8) {
+				session = "2ème année Cycle Ingenieur " + this.etudiant.filiere;
+			}else if (this.etudiant.actual_semester==9 || this.etudiant.actual_semester==10) {
+				session = "3ème année Cycle Ingenieur " + this.etudiant.filiere;}
+
+			if (this.year > 2 && result >= 12){
+				statut = "Admis";
+			} if (this.year > 2  && result < 12 ){
+				statut = "Ajourné";
+			}
+		}
+		if (this.semester != null) {
+			session = "S" + this.semester;
+		}
+
+		document.add(new Paragraph("Résultat d'admission  :        " + result+ "         " + statut)
 				.setFontSize(10F));
 
 		// FOOTER OF THE DOC :
@@ -177,5 +181,66 @@ public class Releve extends Doc {
 		// Making sure the code got executed
 		System.out.println("hello");
 
+	}
+
+	public void getNotes(){
+		int s1=0,s2=0;
+		if (this.year > 0){
+			 s1 = year * 2 - 1;
+			 s2 = year * 2;
+		} else if (this.semester > 0) {
+			 s1 = this.semester;
+			 s2 = this.semester;
+		}
+		try{
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gl","root","");
+			if (conn != null) {
+				String query = "SELECT * FROM notes WHERE n_apogee=? AND (semestre=? OR semestre=?)";
+				PreparedStatement preparedStatement = conn.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE,
+						ResultSet.CONCUR_UPDATABLE);
+				preparedStatement.setString(1,this.etudiant.apogee);
+				preparedStatement.setInt(2,s1);
+				preparedStatement.setInt(3,s2);
+
+				ResultSet res = preparedStatement.executeQuery();
+				while(res.next()){
+					notes.add(new ArrayList<String>(Arrays.asList(res.getString("nom_module"),  res.getString("note"), res.getString("statut"),res.getString("points_jury"))));
+				}
+
+			}
+		}
+		catch (SQLException e){
+			e.printStackTrace();
+		}
+
+	}
+	public double getMoy(){
+		int s1=0,s2=0;
+		if (this.year > 0){
+			s1 = year * 2 - 1;
+			s2 = year * 2;
+		} else if (this.semester > 0) {
+			s1 = this.semester;
+			s2 = this.semester;
+		}
+		try{
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gl","root","");
+			if (conn != null) {
+				String query = "SELECT AVG(note) as moy FROM notes WHERE n_apogee=? AND (semestre=? OR semestre=?)";
+				PreparedStatement preparedStatement = conn.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE,
+						ResultSet.CONCUR_UPDATABLE);
+				preparedStatement.setString(1,this.etudiant.apogee);
+				preparedStatement.setInt(2,s1);
+				preparedStatement.setInt(3,s2);
+				ResultSet res = preparedStatement.executeQuery();
+				res.next();
+				return res.getDouble("moy");
+
+			}
+		}
+		catch (SQLException e){
+			e.printStackTrace();
+		}
+		return 0;
 	}
 }
