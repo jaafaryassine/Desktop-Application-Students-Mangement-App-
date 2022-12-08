@@ -34,10 +34,22 @@ public class Ats extends Doc {
 		String date_naiss = this.etudiant.date_naissance;
 		String annee_actuel = " 2022/2023";
 
-		String annee_etude;
+		String annee_etude="";
 		if(this.etudiant.actual_semester==1 || this.etudiant.actual_semester==2){
-			annee_etude = "1ère année classe préparatoire";
-		} else if (){}
+			annee_etude = "1ère année Classe Préparatoire";
+			
+		} else if (this.etudiant.actual_semester==3 || this.etudiant.actual_semester==4){
+			annee_etude = "2ème année Classe Préparatoire";
+			
+			
+		}else if (this.etudiant.actual_semester==5|| this.etudiant.actual_semester==6) { 
+			annee_etude = "1ère année Cycle Ingenieur " + this.etudiant.filiere;
+			
+		}else if (this.etudiant.actual_semester==7 || this.etudiant.actual_semester==8) { 
+			annee_etude = "2ème année Cycle Ingenieur " + this.etudiant.filiere;
+		}else if (this.etudiant.actual_semester==9 || this.etudiant.actual_semester==10) { 
+			annee_etude = "3ème année Cycle Ingenieur " + this.etudiant.filiere;}
+		
 
 
 		String date_attestation = " 4 decembre 2022";

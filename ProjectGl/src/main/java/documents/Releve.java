@@ -22,6 +22,7 @@ import com.itextpdf.layout.element.Table;
 
 public class Releve extends Doc {
 	public int year;
+	
 
 	public Releve(int id_doc, String type, Etudiant e, int year) {
 		super(id_doc, type, e);
@@ -30,12 +31,12 @@ public class Releve extends Doc {
 
 	public void generateDoc() throws MalformedURLException, FileNotFoundException {
 		// The variable that we'll use to fill the document
-		String sexe = "Monsieur ";
-		String nom = "Mohamed Fatehi Alhabib";
-		String cin = "BE911812";
-		String code_natio = " R134480330";
-		String c_apoge = "18044080";
-		String date_naiss = "15 Mars 2020";
+		
+		String nom = this.etudiant.name;
+		String cin = this.etudiant.cin;
+		String code_natio = this.etudiant.cne;
+		String c_apoge = this.etudiant.apogee;
+		String date_naiss = this.etudiant.date_naissance;
 		String annee_actuel = " 2022/2023";
 		String annee_etude = "2eme Annee du Cycle Ingenieur: Genie Informatique";
 		String date_attestation = " 4 decembre 2022";

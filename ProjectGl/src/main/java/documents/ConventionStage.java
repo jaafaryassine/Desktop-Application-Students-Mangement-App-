@@ -25,25 +25,38 @@ public class ConventionStage extends Doc {
 	public String companyName;
 	public String startDate;
 	public String endDate;
+ public String addressCompany; 
 
-
-	public ConventionStage(int id_doc, String type, Etudiant e, String companyName, String startDate, String endDate) {
+	public ConventionStage(int id_doc, String type, Etudiant e, String companyName, String startDate, String endDate , String addressCompany) {
 		super(id_doc, type, e);
 		this.companyName = companyName;
 		this.startDate = startDate;
 		this.endDate = endDate;
+		this.addressCompany = addressCompany;
 	}
 
 	public void generateDoc() throws MalformedURLException, FileNotFoundException {
 		String nom = this.etudiant.name;
-		String cycle = "Genie informatique ";
+		String cycle = this.etudiant.filiere;
 		String nom_societé = this.companyName;
-		String adresse_societe = " Aéroport Mohamed V Technopole De Nouaceur Bp 80 - Casablanca";
+		String adresse_societe = this.addressCompany;
 		String date_debut_stage = this.startDate;
 		String date_fin_stage = this.endDate;
 		Date now = new Date();
 		String date_actuel = "20/05/2022";
-		String nom_coordonnateur = "DKHISSI IBTISSAM";
+		String nom_coordonnateur = "";
+		if ( this.etudiant.filiere.equals("Génie Informatique")){ 
+			
+			nom_coordonnateur="YACINE EL YOUNSSI" ; 
+		}else if  ( this.etudiant.filiere.equals("Supply Chain Management")){
+			nom_coordonnateur="DKHISSI IBTISSAM";
+		}else if  ( this.etudiant.filiere.equals("Génie des Systèmes Télecomunication et Réseau")){
+			nom_coordonnateur="";
+		}else if  ( this.etudiant.filiere.equals("Génie Mécatronique")){
+			nom_coordonnateur="";
+		}else if  ( this.etudiant.filiere.equals("Génie Civil")){
+			nom_coordonnateur="";
+		}
 
 		// Creating a path to the pdf
 		String path = "D:\\xampp\\htdocs\\glDocs\\" + this.id_doc + ".pdf";
