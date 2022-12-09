@@ -196,7 +196,7 @@ public class DetailsDoc extends javax.swing.JFrame {
 
                 }
                 updateStatusDoc("accepte");
-                Download download = new Download(doc);
+                DownloadDocPage downloadDocPage = new DownloadDocPage(doc.id_doc);
                 setVisible(false);
             }
         });
