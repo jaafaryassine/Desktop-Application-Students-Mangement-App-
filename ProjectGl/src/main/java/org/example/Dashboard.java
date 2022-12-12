@@ -469,7 +469,7 @@ public class Dashboard extends javax.swing.JFrame {
 
             while (res.next()){
                 System.out.println(res.getInt("id_doc"));
-                table.addRow(new Object[]{res.getString("name"), res.getString("email"), res.getString("n_apogee"),res.getString("type"),"Voir details"});
+                table.addRow(new Object[]{res.getString("name"), res.getString("email"), res.getString("n_apogee"),res.getString("type"),res.getString("statut"),"Voir details"});
             }
 
         }

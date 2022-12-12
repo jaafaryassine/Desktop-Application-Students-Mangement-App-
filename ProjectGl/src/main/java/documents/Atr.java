@@ -58,7 +58,7 @@ public class Atr extends Doc {
 		String path = "D:\\xampp\\htdocs\\glDocs\\" + this.id_doc + ".pdf";
 		String imagePath = "D:\\User\\glAssets\\logo.jpeg";
 		String imagePath2 = "D:\\User\\glAssets\\signature.jpeg";
-		String imagePath3 = "C:\\Users\\Simofatt\\Downloads\\arabe_en_tete.jpg" ; 
+		String imagePath3 = "D:\\User\\glAssets\\arabe_en_tete.jpeg" ;
 		// Creating a PdfWriter object ,
 		// which will contain the path to the pdf
 		// + Creating a pdfDocument object

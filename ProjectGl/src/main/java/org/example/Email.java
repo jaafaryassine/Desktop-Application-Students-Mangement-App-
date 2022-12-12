@@ -71,7 +71,8 @@ public class Email {
                 File f =new File("D:\\xampp\\htdocs\\glDocs\\" + doc.id_doc + ".pdf" );
 
                 attachmentPart.attachFile(f);
-                textPart.setText("This is text");
+                textPart.setText("Bonjour" + this.doc.etudiant.name +", \n \n \n Votre demande du document " + this.doc.type + "a été accepté. \n \n" +
+                        "Vous trouverez ci-joint votre" +  this.doc.type + " \n \n \n Cordialement");
                 multipart.addBodyPart(textPart);
                 multipart.addBodyPart(attachmentPart);
 

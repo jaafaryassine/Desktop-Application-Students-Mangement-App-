@@ -1,4 +1,5 @@
 package org.example;
+import java.awt.*;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -33,6 +34,7 @@ public class Download {
             fos = new FileOutputStream(file); //FILE Save Location goes here
             fos.write(fileData);  // write out the file we want to save.
             fos.close(); // close the output stream writer
+            Desktop.getDesktop().open(file);
         }
         catch(Exception m) {
             System.out.println(m);

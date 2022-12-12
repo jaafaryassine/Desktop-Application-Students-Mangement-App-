@@ -56,7 +56,7 @@ public class Releve extends Doc {
 		String path = "D:\\xampp\\htdocs\\glDocs\\" + this.id_doc + ".pdf";
 		String imagePath = "D:\\User\\glAssets\\logo.jpeg";
 		String imagePath2 = "D:\\User\\glAssets\\signature.jpeg";
-		String imagePath3 = "C:\\Users\\Simofatt\\Downloads\\arabe_en_tete.jpg" ; 
+		String imagePath3 = "D:\\User\\glAssets\\arabe_en_tete.jpeg" ;
 
 		
 		// Creating a PdfWriter object ,
@@ -104,18 +104,7 @@ public class Releve extends Doc {
 			    
 			    
 
-		// IMAGE SIGNATURE:
-		ImageData imageData2 = ImageDataFactory.create(imagePath2);
-		Image image2 = new Image(imageData2);
 
-		float z = pdfDocument.getDefaultPageSize().getWidth() / 2;
-		float t = pdfDocument.getDefaultPageSize().getHeight() / 2;
-
-		image2.setFixedPosition(z - 270, t -410);
-		image2.setHeight(80);
-		image2.setWidth(300);
-
-		document.add(image2);
 
 		// HEADER OF THE DOC :
 		document.add(new Paragraph("ROYAUME DU MAROC \r\n" + "Université Abdelmalek Essaadi \r\n"
@@ -153,7 +142,19 @@ public class Releve extends Doc {
 		String statut = "";
 		String session = "";
 		double result = getMoy();
-		if(this.year != null){
+		if(this.year > 0){
+			// IMAGE SIGNATURE:
+			ImageData imageData2 = ImageDataFactory.create(imagePath2);
+			Image image2 = new Image(imageData2);
+
+			float z = pdfDocument.getDefaultPageSize().getWidth() / 2;
+			float t = pdfDocument.getDefaultPageSize().getHeight() / 2;
+
+			image2.setFixedPosition(z - 270, t -410);
+			image2.setHeight(80);
+			image2.setWidth(300);
+
+			document.add(image2);
 			if(this.etudiant.actual_semester==1 || this.etudiant.actual_semester==2){
 				session= "1ère année Classe Préparatoire";
 
@@ -174,8 +175,20 @@ public class Releve extends Doc {
 				statut = "Ajourné";
 			}
 		}
-		if (this.semester != null) {
+		else if (this.semester > 0) {
 			session = "S" + this.semester;
+			// IMAGE SIGNATURE:
+			ImageData imageData2 = ImageDataFactory.create(imagePath2);
+			Image image2 = new Image(imageData2);
+
+			float z = pdfDocument.getDefaultPageSize().getWidth() / 2;
+			float t = pdfDocument.getDefaultPageSize().getHeight() / 2;
+
+			image2.setFixedPosition(z - 270, t -360);
+			image2.setHeight(80);
+			image2.setWidth(300);
+
+			document.add(image2);
 		}
 
 		document.add(new Paragraph("Résultat d'admission  :        " + result+ "         " + statut)

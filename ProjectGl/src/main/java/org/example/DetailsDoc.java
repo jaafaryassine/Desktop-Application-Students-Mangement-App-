@@ -90,15 +90,15 @@ public class DetailsDoc extends javax.swing.JFrame {
 
         detailspanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setText("Nom et Prenom         :");
+        jLabel2.setText("Nom et Prenom :");
 
-        jLabel3.setText("Cin                              :");
+        jLabel3.setText("Cin :");
 
-        jLabel4.setText("N_apogee                  :");
+        jLabel4.setText("N_apogee :");
 
-        jLabel5.setText("Type du document    :");
+        jLabel5.setText("Type du document :");
 
-        jLabel6.setText("Email                          :");
+        jLabel6.setText("Email :");
 
         getDetailsDoc(etudiant, doc);
         accBtn.addActionListener(new java.awt.event.ActionListener() {
