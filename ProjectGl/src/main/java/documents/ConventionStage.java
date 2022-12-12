@@ -64,6 +64,7 @@ public class ConventionStage extends Doc {
 		String path = "D:\\xampp\\htdocs\\glDocs\\" + this.id_doc + ".pdf";
 		String imagePath = "D:\\User\\glAssets\\logo.jpeg";
 		String imagePath2 = "D:\\User\\glAssets\\signature.jpeg";
+		String imagePath3 = "C:\\Users\\Simofatt\\Downloads\\arabe_en_tete.jpg" ; 
 		// Creating a PdfWriter object ,
 		// which will contain the path to the pdf
 		// + Creating a pdfDocument object
@@ -92,6 +93,19 @@ public class ConventionStage extends Doc {
 		image.setFixedPosition(x - 70, y + 280);
 		image.setHeight(112);
 		document.add(image);
+		
+		 //IMAGE ARABE : 
+		ImageData imageData3 = ImageDataFactory.create(imagePath3) ;
+		Image image3 = new Image(imageData3) ;  
+		 
+		float a =pdfDocument.getDefaultPageSize().getWidth()/2 ; 
+		float b =pdfDocument.getDefaultPageSize().getHeight() /2; 
+		
+		image3.setFixedPosition(a+90,b+285); 
+		image3.setHeight(112) ; 
+		image3.setOpacity((float ) 1) ; 
+	    document.add(image3 ) ; 
+
 
 		// HEADER OF THE DOC :
 		document.add(new Paragraph("ROYAUME DU MAROC \r\n" + "Université Abdelmalek Essaadi \r\n"
