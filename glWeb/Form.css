@@ -1,0 +1,168 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+   
+
+
+}
+body{
+    padding:  0 10px;
+    background-image: url('z3.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-top: 100px;
+}
+.wrapper{
+    max-width: 500px;
+    width: 100%;
+    background: #fff;
+    margin: 20px auto ;
+    margin-top: 80px;
+    padding: 30px;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.125);
+}
+h1 {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    font-family: "Raleway", sans-serif;
+    font-weight: 300;
+    font-size: 40px;
+    color: #080808;
+    -webkit-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+  }
+  
+  h1 span {
+    display: block;
+    font-size: 0.3em;
+    line-height: 1.3;
+  }
+  h1 em {
+    font-style: normal;
+    font-weight: 700;
+  }
+.two h1 {
+    text-transform: capitalize;
+  }
+  .two h1:before {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100px;
+    height: 2px;
+    content: "";
+    background-color: #6a26e9;
+  }
+  
+  .two h1 span {
+    font-size: 13px;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    line-height: 2em;
+    padding-left: 0.25em;
+    color: rgba(0, 0, 0, 0.4);
+    padding-bottom: 10px;
+  }
+  .alt-two h1 {
+    text-align:center;
+  }
+  .alt-two h1:before {
+    left:50%; 
+    margin-left:-30px;
+  }
+  .input_field{
+    margin-top: 40px;
+  }
+ .input_field input{
+    width: 100%;
+    outline: none;
+    border: 1px solid #6a26e9;
+    font-size: 15px;
+    padding: 8px 10px;
+    border-radius:  3px;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+
+}
+
+.cvs .input-field input{
+  width: 100%;
+  outline: none;
+  border: 1px solid #6a26e9;
+  font-size: 15px;
+  padding: 8px 10px;
+  border-radius:  3px;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+.cvs .input-field .date{
+  width: 100%;
+  outline: none;
+  border: 1px solid #6a26e9;
+  font-size: 15px;
+  padding: 8px 10px;
+  transition: all 0.3s ease;
+}
+
+.column select{
+  width: 100%;
+  outline: none;
+    border: 1px solid #6a26e9;
+    font-size: 15px;
+    padding: 8px 10px;
+    border-radius:  3px;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.botton_submit{
+  height: 45px;
+  width: 100%;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  margin-top: 30px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: 400;
+  transition: all 0.2s ease;
+  background-color: rgb(130, 106, 251);
+}
+
+
+
+
+#atr,#cvs,#releve,#yearSection,#semesterSection{
+    display: none;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#availability{
+  margin-top: -30px !important;
+}
+#error{
+    color: red;
+}
+#sendBtn{
+  background-color: grey;
+}
+
+
+/* Responsive */
+@media screen and (max-width: 700px) {
+    .form .column{
+        flex-wrap: wrap;
+    }
+    body{
+      margin-top: 150px;
+      background-image: url('z1234.png');
+      background-size: cover;
+
+    }
+}
